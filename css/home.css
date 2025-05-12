@@ -1,0 +1,23 @@
+#homeIntro {
+    width: 80%;
+}
+
+.btnBooking {
+    background-color: #065A82;
+    color: #FEF9FF;
+    border: none;
+}
+
+.btnBooking:hover {
+    background-color: #21295C;
+    color: #FEF9FF;
+    border: none;
+}
+
+.bg-blue-4 {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.bg-blue-4:hover {
+    transform: scale(1.05);
+}

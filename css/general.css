@@ -1,0 +1,68 @@
+.blue-1 {
+    background-color: #21295C
+}
+
+.blue-2 {
+    color: #1B3B6F
+}
+
+.blue-3 {
+    color: #065A82
+}
+
+.blue-4 {
+    color: #91C6E9
+}
+
+.bg-blue-4{
+    background-color: #91C6E9;
+}
+
+.bg-blue-2 {
+    background-color: #065A82
+}
+
+.white {
+    color: #FEF9FF
+}
+
+.locked-grey {
+    color: #8D8A8D
+}
+
+.locked-grey {
+    color: #8D8A8D
+}
+
+.yellow {
+    color: #FFFB17
+}
+
+.navbar{
+    width: 80%;
+    border-radius: 20px;
+    justify-self: center;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: #FEF9FF !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .navbar-brand:hover {
+    color: #FFFB17 !important;
+}
+
+#signInNavbar button{
+    background: none !important;
+    border: none !important;
+}
+
+#navbarSupportedContent{
+    align-items: end;
+}
+
+#navbarLogo{
+    margin-left: 50px;
+}

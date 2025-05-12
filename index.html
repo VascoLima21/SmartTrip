@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/general.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light blue-1 mt-3">
+        <a class="navbar-brand nav-item active ml-5" href="#" id="navbarLogo">
+            <img src="./assets/SmartTrip Logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            SmartTrip
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./html/booking.html">Booking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./html/destinations.html">Destinations</a>
+                </li>
+                <li class="nav-item" id="signInNavbar">
+                    <button type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal"
+                        id="btnSignIn">
+                        Sign In
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Modal for the Login-->
+
+    <div class="modal" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name/Email</label>
+                            <input type="text" class="form-control" id="nameOrEmailInput" aria-describedby="emailHelp"
+                                placeholder="Type your Username or Email">
+                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="passwordInput"
+                                placeholder="Type your Password">
+                        </div>
+                        <!-- <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div> -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <div class="text-center w-100">
+                        <small class="text-muted">Don’t have an account?
+                            <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal"
+                                data-bs-target="#signupModal">Register!</a>
+                        </small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Container with the image and introductory text-->
+
+    <div class="position-relative mx-auto my-4" id="homeIntro">
+        <img src="./assets/HomePage image.png" alt="Banner" class="img-fluid w-100 rounded">
+        <div
+            class="position-absolute top-50 start-50 translate-middle text-center text-white bg-dark bg-opacity-50 p-3 rounded">
+            <h1 class="display-5 fw-bold">Discover Your Next Adventure</h1>
+            <p class="lead">Let us help you plan your next trip based <br> on your preferences</p>
+            <a href="./html/booking.html" class="btn btnBooking mt-3 py-2 px-4">Start Booking</a>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <a href="./html/profile.html" class="text-decoration-none text-dark">
+                    <div class="p-4 rounded bg-light-blue h-100 shadow-sm bg-blue-4">
+                        <i class="bi bi-person-circle display-4 mb-3"></i>
+                        <h5 class="fw-bold">Create your Profile</h5>
+                        <p class="mb-0">Add your details and fill in your preferences</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="./html/destinations.html" class="text-decoration-none text-dark">
+                    <div class="p-4 rounded bg-light-blue h-100 shadow-sm bg-blue-4">
+                        <i class="bi bi-globe display-4 mb-3"></i>
+                        <h5 class="fw-bold">Explore Destinations</h5>
+                        <p class="mb-0">Search or browse popular destination suggestions</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="./html/booking.html" class="text-decoration-none text-dark">
+                    <div class="p-4 rounded bg-light-blue h-100 shadow-sm bg-blue-4">
+                        <i class="bi bi-briefcase display-4 mb-3"></i>
+                        <h5 class="fw-bold">Book with Ease</h5>
+                        <p class="mb-0">Plan your trip based on our recommendations</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

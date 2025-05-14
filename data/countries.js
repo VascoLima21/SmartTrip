@@ -5,10 +5,12 @@ const japan = {
     airports: [],
     capital: "Tokyo",
     typesOfTourism: ["Cultural", "Technological", "Gastronomical"],
+    img: "../assets/countryImages/JapanImage.png",
     cities: [
         {
             cityId: 1,
             name: "Tokyo",
+            img: "../assets/cityImages/tokyo.jpg",
             hotels: [
                 {
                     hotelId: 1,
@@ -36,6 +38,7 @@ const japan = {
         {
             cityId: 2,
                 name: "Kyoto",
+                img: "../assets/cityImages/kyoto.jpg",
                 hotels: [
                     {
                         hotelId: 4,

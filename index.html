@@ -14,33 +14,7 @@
 
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light blue-1 mt-3">
-        <a class="navbar-brand nav-item active ml-5" href="#" id="navbarLogo">
-            <img src="./assets/SmartTrip Logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-            SmartTrip
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="./html/booking.html">Booking</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./html/destinations.html">Destinations</a>
-                </li>
-                <li class="nav-item" id="signInNavbar">
-                    <button type="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal"
-                        id="btnSignIn">
-                        Sign In
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div id="navbarContainer"></div>
 
     <!--Modal for the Login-->
 
@@ -73,8 +47,8 @@
                     </form>
                     <div class="text-center w-100">
                         <small class="text-muted">Don’t have an account?
-                            <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal"
-                                data-bs-target="#signUpModal" id="loginToRegister">Register!</a>
+                            <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signUpModal"
+                                id="loginToRegister">Register!</a>
                         </small>
                     </div>
                 </div>
@@ -114,7 +88,7 @@
                         <div class="form-group">
                             <label for="birthDate">Date of Birth</label>
                             <input type="date" class="form-control" id="birthDate"
-                            placeholder="Select your Date of Birth">
+                                placeholder="Select your Date of Birth">
                         </div>
                         <div class="form-group">
                             <label for="passwordInput">Password</label>
@@ -134,8 +108,8 @@
                     </form>
                     <div class="text-center w-100">
                         <small class="text-muted">Already have an account?
-                            <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal"
-                                data-bs-target="#loginModal" id="signupToLogin">Log in!</a>
+                            <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal"
+                                id="signupToLogin">Log in!</a>
                         </small>
                     </div>
                 </div>

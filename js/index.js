@@ -1,4 +1,9 @@
 import { login } from "./auth.js"
+import renderNavbar from "./navbar.js"
+
+document.addEventListener("DOMContentLoaded", () =>{
+    renderNavbar()
+})
 
 document.getElementById("loginForm").addEventListener('submit', (event) => {
     event.preventDefault()

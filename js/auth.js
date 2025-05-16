@@ -24,6 +24,7 @@ export function login(name, password) {
 
 export function logout() {
     localStorage.removeItem("userLogged")
+    alert("User Logged Out Successfully")
 }
 
 export function getUserLogged() {

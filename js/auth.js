@@ -2,9 +2,6 @@ import users from "../data/users.js"
 import calcAge from "./utils/date.js"
 
 export function login(name, password) {
-    alert("IT ENTERED")
-    console.log("IT ENTERED");
-    
     for (let user of users) {
         if (user.name == name && user.password == password) {
             localStorage.setItem("userLogged", JSON.stringify(user))
@@ -12,7 +9,6 @@ export function login(name, password) {
             alert("Sucess")
             return true
         } else if (user.name == name && user.password !== password) {
-            alert("ongsnonsgnsdgnsdpn")
             // Modal alerting that the passwords don't match
             return false
         }

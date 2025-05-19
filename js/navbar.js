@@ -1,12 +1,17 @@
 import { getUserLogged, logout } from "./auth.js"
 
+function isHomePage() {
+    return location.pathname.endsWith("index.html")
+}
 export default function renderNavbar() {
     const user = getUserLogged()
+    const pathStart = isHomePage() ? "./html" : "../html"
+    const assetsPath = isHomePage() ? "./assets" : "../assets"
 
     const navbarHTML = `
     <nav class="navbar navbar-expand-lg navbar-light blue-1 mt-3">
         <a class="navbar-brand nav-item active ml-5" href="#" id="navbarLogo">
-            <img src="./assets/SmartTrip Logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="${assetsPath}/SmartTrip Logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
             SmartTrip
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -17,13 +22,16 @@ export default function renderNavbar() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./html/booking.html">Booking</a>
+                    <a class="nav-link" href="${pathStart}/booking.html">Booking</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./html/destinations.html">Destinations</a>
+                    <a class="nav-link" href="${pathStart}/destinations.html">Destinations</a>
                 </li>
                 ${user
             ? `
+                <li class="nav-item">
+                    <a class="nav-link" href="${pathStart}/profile.html">Profile</a>
+                </li>
                 <li class="nav-item">
                     <button class="btn nav-link" id="logoutBtn">Logout</button>
                 </li>`

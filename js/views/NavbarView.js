@@ -1,17 +1,18 @@
-import { getUserLogged, logout } from "./auth.js"
+import { getUserLogged, logout } from "../utils/auth.js"
 
 function isHomePage() {
     return location.pathname.endsWith("index.html")
 }
+
 export default function renderNavbar() {
     const user = getUserLogged()
     const pathStart = isHomePage() ? "./html" : "../html"
     const assetsPath = isHomePage() ? "./assets" : "../assets"
-
+    const logoPath = isHomePage() ? "SmartTrip Logo Selected.svg" : "SmartTrip Logo.svg"
     const navbarHTML = `
     <nav class="navbar navbar-expand-lg navbar-light blue-1 mt-3">
-        <a class="navbar-brand nav-item active ml-5" href="#" id="navbarLogo">
-            <img src="${assetsPath}/SmartTrip Logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand nav-item ml-5" href="/index.html" id="navbarLogo">
+            <img src="${assetsPath}/${logoPath}" width="30" height="30" class="d-inline-block align-top" alt="">
             SmartTrip
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -49,15 +50,21 @@ export default function renderNavbar() {
     const container = document.getElementById("navbarContainer")
     container.innerHTML = navbarHTML
 
-    // If there is a logout button add event listener to it
-    const logoutBtn = document.getElementById("logoutBtn")
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-            logout()
-            renderNavbar()
-            renderWelcomeText()
-        })
-    }
+    const currentPath = location.pathname
+
+    document.querySelectorAll(".nav-link").forEach(link => {
+        alert(link.endsWith("/"))
+    })
+}
+
+// If there is a logout button add event listener to it
+const logoutBtn = document.getElementById("logoutBtn")
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        logout()
+        renderNavbar()
+        renderWelcomeText()
+    })
 }
 
 export function renderWelcomeText() {

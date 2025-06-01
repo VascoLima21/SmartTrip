@@ -1,5 +1,5 @@
-import users from "../data/users.js"
-import calcAge from "./utils/date.js"
+import users from "../models/users.js"
+import calcAge from "./date.js"
 
 export function login(name, password) {
     for (let user of users) {

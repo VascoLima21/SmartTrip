@@ -46,7 +46,7 @@
 
 .navbar .nav-link,
 .navbar .navbar-brand {
-    color: #FEF9FF !important;
+    color: #FEF9FF;
 }
 
 .navbar .nav-link:hover,
@@ -65,4 +65,8 @@
 
 #navbarLogo{
     margin-left: 50px;
+}
+
+.selected {
+    color: #FFFB17 !important;
 }

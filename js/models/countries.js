@@ -1,3 +1,36 @@
+export class Hotel {
+    constructor(hotelId, name, location, stars, rating) {
+        this.hotelId = hotelId
+        this.name = name
+        this.location = location
+        this.stars = stars
+        this.rating = rating
+    }
+}
+
+export class City {
+    constructor(cityId, name, img, hotels = []) {
+        this.cityId = cityId
+        this.name = name
+        this.img = img
+        this.hotels = hotels.map(h => new Hotel(h.hotelId, h.name, h.location, h.stars, h.rating))
+    }
+}
+
+export class Country {
+    constructor(countryId, capital, typesOfTourism, img, cities = [], airports = []) {
+        this.countryId = countryId
+        this.capital = capital
+        this.typesOfTourism = typesOfTourism
+        this.img = img
+        this.cities = cities.map(c => new City(c.cityId, c.name, c.img, c.hotels))
+        this.airports = airports
+    }
+}
+
+
+
+
 let countries = []
 
 const japan = {

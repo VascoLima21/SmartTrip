@@ -1,5 +1,5 @@
-import { login } from "./auth.js"
-import renderNavbar, { renderWelcomeText } from "./navbar.js"
+import { login } from "../utils/auth.js"
+import renderNavbar, { renderWelcomeText } from "./NavbarView.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNavbar()

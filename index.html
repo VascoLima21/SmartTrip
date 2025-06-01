@@ -21,45 +21,7 @@
     <!--Modal for the Login-->
 
     <div class="modal" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="nameOrEmailInput">Name/Email</label>
-                            <input type="text" class="form-control" id="nameOrEmailInput" aria-describedby="emailHelp"
-                                placeholder="Type your Name or Email">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.</small> -->
-                        </div>
-                        <div class="form-group">
-                            <label for="passwordInput">Password</label>
-                            <input type="password" class="form-control" id="passwordInputLogin"
-                                placeholder="Type your Password">
-                        </div>
-                        <!-- <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div> -->
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    <div class="text-center w-100">
-                        <small class="text-muted">Don’t have an account?
-                            <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signUpModal"
-                                id="loginToRegister">Register!</a>
-                        </small>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!--Modal for the SignUp-->
@@ -167,7 +129,7 @@
         </div>
     </div>
 
-    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/views/HomeView.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,10 @@
 import { login } from "../utils/auth.js"
 import renderNavbar, { renderWelcomeText } from "./NavbarView.js"
+import { usersInit, countriesInit } from "../init.js"
 
 document.addEventListener("DOMContentLoaded", () => {
+    const users = usersInit()
+    const countries = countriesInit()
     renderNavbar()
     renderWelcomeText()
 

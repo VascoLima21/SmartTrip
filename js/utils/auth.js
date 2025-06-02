@@ -1,5 +1,6 @@
-import users from "../models/users.js"
 import calcAge from "./date.js"
+
+const users = JSON.parse(localStorage.getItem("users"))
 
 export function login(name, password) {
     for (let user of users) {

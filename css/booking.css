@@ -1,0 +1,136 @@
+/* Page Title */
+.page-title {
+    text-align: center;
+    color: #1B3B6F;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 40px 0;
+}
+
+/* Booking Form Container */
+.booking-form-container {
+    background: linear-gradient(135deg, #21295C, #1B3B6F);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 0 auto 40px;
+    max-width: 900px;
+    color: #FEF9FF;
+}
+
+/* Form Layout */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+    align-items: center;
+}
+
+.form-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #FEF9FF;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    background-color: #FEF9FF;
+    color: #21295C;
+}
+
+/* Get Recommendations Button */
+.btn-recommendations {
+    background: linear-gradient(135deg, #91C6E9);
+    border: none;
+    padding: 15px 50px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 300px;
+}
+
+.btn-recommendations:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(145, 198, 233, 0.4);
+}
+
+/* Recommendations Section */
+.recommendations-section {
+    display: none;
+    margin-top: 50px;
+}
+
+.recommendations-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Trip Cards */
+.trip-card {
+    background: linear-gradient(135deg, #91C6E9);
+    border-radius: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.trip-card:hover {
+    transform: translateY(-5px);
+}
+
+.trip-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.trip-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #21295C;
+    margin-bottom: 20px;
+}
+
+.trip-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-trip {
+    background-color: #21295C;
+    color: #FEF9FF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-trip:hover {
+    background-color: #1B3B6F;
+    transform: translateY(-2px);
+}
+

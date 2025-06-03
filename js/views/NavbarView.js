@@ -50,14 +50,14 @@ export default function renderNavbar() {
     const container = document.getElementById("navbarContainer")
     container.innerHTML = navbarHTML
 
-    const currentPath = location.pathname
+    // const currentPath = location.pathname
 
-    document.querySelectorAll(".nav-link").forEach(link => {
-        alert(link.endsWith("/"))
-    })
+    // document.querySelectorAll(".nav-link").forEach(link => {
+    //     alert(link.href.endsWith("/"))
+    // })
 }
 
-// If there is a logout button add event listener to it
+// If there is a logout button adds event listener to it
 const logoutBtn = document.getElementById("logoutBtn")
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
@@ -65,16 +65,4 @@ if (logoutBtn) {
         renderNavbar()
         renderWelcomeText()
     })
-}
-
-export function renderWelcomeText() {
-    const user = getUserLogged()
-    const welcomeTextDiv = document.getElementById("welcomeText")
-    welcomeTextDiv.innerHTML = ""
-
-    if (user) {
-        const txtWelcomeUser = document.createElement("h1")
-        txtWelcomeUser.textContent = `Welcome, ${user.name}!`
-        welcomeTextDiv.appendChild(txtWelcomeUser)
-    }
 }

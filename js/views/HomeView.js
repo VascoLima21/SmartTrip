@@ -1,5 +1,5 @@
-import { login } from "../utils/auth.js"
-import renderNavbar, { renderWelcomeText } from "./NavbarView.js"
+import { login, getUserLogged } from "../utils/auth.js"
+import renderNavbar from "./NavbarView.js"
 import { usersInit, countriesInit } from "../init.js"
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,3 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 })
+
+function renderWelcomeText() {
+    const user = getUserLogged()
+    const welcomeTextDiv = document.getElementById("welcomeText")
+    welcomeTextDiv.innerHTML = ""
+
+    if (user) {
+        const txtWelcomeUser = document.createElement("h1")
+        txtWelcomeUser.textContent = `Welcome, ${user.name}!`
+        welcomeTextDiv.appendChild(txtWelcomeUser)
+    }
+}

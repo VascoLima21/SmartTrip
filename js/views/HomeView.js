@@ -1,10 +1,11 @@
 import { login, getUserLogged } from "../utils/auth.js"
 import renderNavbar from "./NavbarView.js"
-import { usersInit, countriesInit } from "../init.js"
+import { usersInit, countriesInit, bookingsInit } from "../init.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     const users = usersInit()
     const countries = countriesInit()
+    const bookings = bookingsInit()
     renderNavbar()
     renderWelcomeText()
 

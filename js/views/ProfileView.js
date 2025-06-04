@@ -1,6 +1,7 @@
 import { getUserLogged } from "../utils/auth.js"
 import { editData } from "../utils/editData.js"
 import renderNavbar from "./NavbarView.js"
+import { loadWorldMap } from "../map/loadMap.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNavbar()
@@ -60,8 +61,8 @@ function renderProfilePage() {
             </div>
 
             <div class="tab-pane fade" id="myMap" role="tabpanel">
-                <div class="container mt-4 text-center">
-                    <p>This is the My Map tab content.</p>
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <div id="map" style="width: 100%; height: 500px;"></div>
                 </div>
             </div>
 
@@ -75,9 +76,19 @@ function renderProfilePage() {
 
     document.body.insertAdjacentHTML("beforeend", profileHTML)
     const editProfileForm = document.getElementById("editProfileForm")
-    
+
     editProfileForm.addEventListener("submit", (event) => {
         event.preventDefault()
         editData()
     })
+
+    let mapLoaded = false;
+
+    document.getElementById("myMapTab").addEventListener("click", () => {
+        if (!mapLoaded) {
+            loadWorldMap();
+            mapLoaded = true;
+        }
+    });
+
 }

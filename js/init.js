@@ -1,5 +1,6 @@
 import { User } from "./models/UserModel.js"
 import { Country } from "./models/CountryModel.js"
+import { Booking } from "./models/BookingModel.js"
 
 export function usersInit() {
     const localUsers = localStorage.getItem("users")
@@ -120,4 +121,51 @@ export function countriesInit() {
     localStorage.setItem("countries", JSON.stringify(countries))
 
     return countries;
+}
+
+export function bookingsInit() {
+    const localBookings = localStorage.getItem("bookings");
+
+    if (localBookings) {
+        const parsed = JSON.parse(localBookings);
+        return parsed.map(booking => new Booking(
+            booking.departureAirport,
+            booking.arrivalAirport,
+            booking.cost,
+            booking.tourismType,
+            booking.hotel,
+            booking.numberOfPeople,
+            booking.destinationCountry,
+            booking.destinationCountryCode,
+            booking.startDate,
+            booking.endDate,
+            booking.userEmail
+        ));
+    }
+    const bookings = [];
+
+    const japanBooking = new Booking(
+        "Lisbon Airport",
+        "Tokyo Haneda Airport",
+        2300,
+        ["Cultural"],
+        {
+            name: "Park Hotel Tokyo",
+            location: "Shiodome",
+            stars: 4,
+            rating: 8.8
+        },
+        2,
+        "Japan",
+        "JP",
+        "2024-04-01",
+        "2024-04-14",
+        "admin1@gmail.com"
+    );
+
+    bookings.push(japanBooking);
+    alert(bookings)
+    localStorage.setItem("bookings", JSON.stringify(bookings));
+
+    return bookings;
 }

@@ -86,8 +86,8 @@ function renderProfilePage() {
 
     document.getElementById("myMapTab").addEventListener("click", () => {
         if (!mapLoaded) {
-            loadWorldMap();
-            mapLoaded = true;
+            loadWorldMap()
+            mapLoaded = true
         }
     });
 

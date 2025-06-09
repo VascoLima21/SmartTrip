@@ -1,4 +1,6 @@
 import calcAge from "./date.js"
+import { User } from "../models/UserModel.js"
+import { Booking } from "../models/BookingModel.js"
 
 const users = JSON.parse(localStorage.getItem("users"))
 
@@ -25,7 +27,37 @@ export function logout() {
 }
 
 export function getUserLogged() {
-    return JSON.parse(localStorage.getItem("userLogged"))
+    const parsedUser = JSON.parse(localStorage.getItem("userLogged"))
+    if (!parsedUser) return null
+
+    // Reconstructing Booking instances
+    const bookings = parsedUser.myBookings.map(booking => new Booking(
+        booking.departureAirport,
+        booking.arrivalAirport,
+        booking.cost,
+        booking.tourismType,
+        booking.hotel,
+        booking.numberOfPeople,
+        booking.destinationCountry,
+        booking.destinationCountryCode,
+        booking.startDate,
+        booking.endDate,
+        booking.userEmail
+    ))
+
+    return new User(
+        parsedUser.name,
+        parsedUser.email,
+        parsedUser.birthDate,
+        parsedUser.password,
+        bookings,
+        parsedUser.points,
+        parsedUser.profileImg,
+        parsedUser.titles,
+        parsedUser.favouriteBookings,
+        parsedUser.curTitle,
+        parsedUser.role
+    )
 }
 
 export function createAccount(email, name, password, birthDate) {

@@ -6,13 +6,57 @@ export function usersInit() {
     const localUsers = localStorage.getItem("users")
 
     if (localUsers) {
-        const parsedUsers = JSON.parse(localUsers)
-        //Reconstructs the parsedUsers list so they are instances of the User class, to have access to methods and so on
-        return parsedUsers.map(user => new User(
-            user.name, user.email, user.birthDate, user.password, user.myBookings, user.points,
-            user.profileImg, user.titles, user.favouriteBookings, user.curTitle, user.role
-        ));
+        const parsedUsers = JSON.parse(localUsers);
+
+        return parsedUsers.map(user => {
+            const rebuiltBookings = user.myBookings.map(booking => new Booking(
+                booking.departureAirport,
+                booking.arrivalAirport,
+                booking.cost,
+                booking.tourismType,
+                booking.hotel,
+                booking.numberOfPeople,
+                booking.destinationCountry,
+                booking.destinationCountryCode,
+                booking.startDate,
+                booking.endDate,
+                booking.userEmail
+            ));
+
+            return new User(
+                user.name,
+                user.email,
+                user.birthDate,
+                user.password,
+                rebuiltBookings,
+                user.points,
+                user.profileImg,
+                user.titles,
+                user.favouriteBookings,
+                user.curTitle,
+                user.role
+            );
+        });
     }
+
+    const tokyoBooking = new Booking(
+        "Lisbon Airport",              // departureAirport
+        "Tokyo Haneda Airport",        // arrivalAirport
+        2300,                         // cost
+        ["Cultural"],                 // tourismType
+        {
+            name: "Park Hotel Tokyo",
+            location: "Shiodome",
+            stars: 4,
+            rating: 8.8
+        },                            // hotel
+        2,                            // numberOfPeople
+        "Japan",                      // destinationCountry
+        "JP",                         // destinationCountryCode
+        "2024-04-01",                 // startDate
+        "2024-04-14",                 // endDate
+        "admin1@gmail.com"            // userEmail
+    );
 
     let users = [];
 
@@ -21,7 +65,7 @@ export function usersInit() {
         "admin1@gmail.com",
         "14/3/1990",
         "adminPassword123",
-        [], // myBookings
+        [tokyoBooking], // myBookings
         0, // points
         "../assets/profileImages/admin1pfp.jpg",
         [], // titles

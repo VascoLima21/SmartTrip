@@ -55,14 +55,14 @@ export default function renderNavbar() {
     // document.querySelectorAll(".nav-link").forEach(link => {
     //     alert(link.href.endsWith("/"))
     // })
+    // If there is a logout button adds event listener to it
+    const logoutBtn = document.getElementById("logoutBtn")
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            logout()
+            renderNavbar()
+            renderWelcomeText()
+        })
+    }
 }
 
-// If there is a logout button adds event listener to it
-const logoutBtn = document.getElementById("logoutBtn")
-if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-        logout()
-        renderNavbar()
-        renderWelcomeText()
-    })
-}

@@ -1,13 +1,12 @@
 import { User } from "./models/UserModel.js"
 import { Country } from "./models/CountryModel.js"
 import { Booking } from "./models/BookingModel.js"
-
+import { Title } from "./models/TitleModel.js"
+ 
 export function usersInit() {
     const localUsers = localStorage.getItem("users")
-
     if (localUsers) {
-        const parsedUsers = JSON.parse(localUsers);
-
+        const parsedUsers = JSON.parse(localUsers)
         return parsedUsers.map(user => {
             const rebuiltBookings = user.myBookings.map(booking => new Booking(
                 booking.departureAirport,
@@ -59,8 +58,8 @@ export function usersInit() {
     );
 
     let users = [];
-
-    let admin = new User(
+    const titles = JSON.parse(localStorage.getItem("titles"))
+    const admin = new User(
         "admin1",
         "admin1@gmail.com",
         "14/3/1990",
@@ -68,7 +67,7 @@ export function usersInit() {
         [tokyoBooking], // myBookings
         0, // points
         "../assets/profileImages/admin1pfp.jpg",
-        [], // titles
+        [titles[0]], // titles
         [], // favouriteBookings
         "", // curTitle
         "admin" // role
@@ -212,4 +211,46 @@ export function bookingsInit() {
     localStorage.setItem("bookings", JSON.stringify(bookings));
 
     return bookings;
+}
+
+export function titlesInit() {
+    const localTitles = localStorage.getItem("titles")
+
+    if (localTitles) {
+        const parsedTitles = JSON.parse(localTitles);
+
+        return parsedTitles.map(title => {
+            return new Title(
+                title.titleName,
+                title.requirementsText,
+                title.numTripsReq
+            );
+        });
+    }
+
+    let titles = [];
+
+    const beginnerTraveler = new Title(
+        "Beginner Traveler",
+        "Book your first trip using SmartTrip and complete it.",
+        1
+    )
+
+    const experiencedTraveler = new Title(
+        "Experienced Traveler",
+        "Book 5 trips using SmartTrip and complete them",
+        5
+    )
+
+    const advancedTraveler = new Title(
+        "Advanced Traveler",
+        "Book 10 trips using SmartTrip and complete them",
+        10
+    )
+
+    titles.push(beginnerTraveler, experiencedTraveler, advancedTraveler);
+
+    localStorage.setItem("titles", JSON.stringify(titles))
+
+    return titles
 }

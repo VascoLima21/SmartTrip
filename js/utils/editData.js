@@ -29,7 +29,6 @@ export function editData() {
     const users = JSON.parse(localStorage.getItem("users"))
     const updatedUsers = users.map(user => {
         if (user.name == oldCurUser.name && user.email == oldCurUser.email) {
-            alert(curUser)
             return curUser
         }
         return user
@@ -39,4 +38,23 @@ export function editData() {
     localStorage.setItem("users", (JSON.stringify(updatedUsers)))
 
     return true
+}
+
+export function editTitle(newTitle) {
+    const curUser = JSON.parse(localStorage.getItem("userLogged"))
+
+    curUser.curTitle = newTitle
+
+    const users = JSON.parse(localStorage.getItem("users"))
+
+    //Checks the entire users list and if the email is the current user's email it replaces it with the new curUser object
+    const updatedUsers = users.map(user => {
+        if (user.email == curUser.email) {
+            return curUser
+        }
+        return user
+    })
+
+    localStorage.setItem("userLogged", (JSON.stringify(curUser)))
+    localStorage.setItem("users", (JSON.stringify(updatedUsers)))
 }

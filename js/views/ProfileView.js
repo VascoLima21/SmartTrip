@@ -1,5 +1,5 @@
 import { getUserLogged } from "../utils/auth.js"
-import { editData } from "../utils/editData.js"
+import { editData, editTitle } from "../utils/editData.js"
 import renderNavbar from "./NavbarView.js"
 import { loadWorldMap } from "../map/loadMap.js"
 
@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderNavbar()
     renderProfilePage()
 })
-
 
 function renderProfilePage() {
     const user = getUserLogged()
@@ -29,13 +28,11 @@ function renderProfilePage() {
         <!-- Tab content -->
         <div class="tab-content mt-3" id="profileTabsContent">
             <div class="tab-pane fade show active" id="myData" role="tabpanel">
-                <div class="container mt-4 p-4 rounded blue-1 text-white text-center" style="max-width: 600px;">
-                    <!-- Profile Image -->
+                <div class="container mt-4 p-4 rounded blue-1 text-white text-center" style="max-width: 600px">
                     <div class="d-flex justify-content-center mb-4">
                         <img src="${user.profileImg}" alt="Profile Image" class="rounded-circle" width="120" height="120">
                     </div>
 
-                    <!-- Edit Data Form -->
                     <form id="editProfileForm" class="text-start">
                         <div class="mb-3">
                             <label for="editName" class="form-label">Name</label>
@@ -61,34 +58,91 @@ function renderProfilePage() {
             </div>
 
             <div class="tab-pane fade" id="myMap" role="tabpanel">
-                <div style="max-width: 700px; margin: 0 auto;">
-                    <div id="map" style="width: 100%; height: 500px;"></div>
+                <div style="max-width: 700px margin: 0 auto">
+                    <div id="map" style="width: 100% height: 500px"></div>
                 </div>
             </div>
 
             <div class="tab-pane fade" id="myTitles" role="tabpanel">
-                <div class="container mt-4 text-center">
-                    <p>This is the My Titles tab content.</p>
+                <div class="container mt-4 p-4 rounded blue-1 text-white text-center" style="max-width: 600px">
+
+                    <!-- CURRENT TITLE -->
+                    <div class="mb-4 p-3 rounded bg-primary bg-opacity-50">
+                        <h5>Current Title</h5>
+                        <p id="currentTitle" class="fw-bold text-warning">${user.curTitle?.titleName || "No Title"}</p>
+                    </div>
+
+                    <!-- ALL TITLES -->
+                    <div class="mb-4 p-3 rounded bg-primary bg-opacity-50" style="max-height: 150px overflow-y: auto">
+                        <h5>All Titles</h5>
+                        <ul id="titleList" class="list-group list-group-flush mt-2"></ul>
+                    </div>
+
+                    <!-- REQUIREMENTS -->
+                    <div class="p-3 rounded bg-primary bg-opacity-50">
+                        <h5>Requirements</h5>
+                        <p id="requirementsText" class="mt-2">Select a title to view the requirements.</p>
+                    </div>
+
+                    <button id="saveTitleBtn" class="btn btn-light mt-3" disabled>Save</button>
+
                 </div>
             </div>
         </div>
     `
 
     document.body.insertAdjacentHTML("beforeend", profileHTML)
-    const editProfileForm = document.getElementById("editProfileForm")
 
+    const editProfileForm = document.getElementById("editProfileForm")
     editProfileForm.addEventListener("submit", (event) => {
         event.preventDefault()
         editData()
     })
 
-    let mapLoaded = false;
-
+    // Map
+    let mapLoaded = false
     document.getElementById("myMapTab").addEventListener("click", () => {
         if (!mapLoaded) {
             loadWorldMap()
             mapLoaded = true
         }
-    });
+    })
 
+    // Titles logic
+    const titleList = document.getElementById("titleList")
+    const requirementsText = document.getElementById("requirementsText")
+    const currentTitleText = document.getElementById("currentTitle")
+    const saveTitleBtn = document.getElementById("saveTitleBtn")
+
+    let selectedTitle
+    const allTitles = JSON.parse(localStorage.getItem("titles"))
+
+    allTitles.forEach(title => {
+        const li = document.createElement("li")
+        li.classList.add("list-group-item", "bg-transparent", "text-white", "border-0", "title-item")
+        li.style.cursor = "pointer"
+        li.textContent = title.titleName
+
+        const hasTitle = user.titles.some(t => t.titleName === title.titleName)
+        if (!hasTitle) {
+            li.classList.add("text-muted")
+            li.style.pointerEvents = "none"
+        }
+
+        li.addEventListener("click", () => {
+            selectedTitle = title
+            requirementsText.textContent = title.requirementsText
+            saveTitleBtn.disabled = false
+        })
+
+        titleList.appendChild(li)
+    })
+
+    saveTitleBtn.addEventListener("click", () => {
+        if (selectedTitle) {
+            currentTitleText.textContent = selectedTitle.titleName
+            editTitle(selectedTitle)
+            saveTitleBtn.disabled = true
+        }
+    })
 }

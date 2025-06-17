@@ -9,9 +9,11 @@ export default function renderNavbar() {
     const pathStart = isHomePage() ? "./html" : "../html"
     const assetsPath = isHomePage() ? "./assets" : "../assets"
     const logoPath = isHomePage() ? "SmartTrip Logo Selected.svg" : "SmartTrip Logo.svg"
+    const currentPage = location.pathname.split("/").pop()
+
     const navbarHTML = `
-    <nav class="navbar navbar-expand-lg navbar-light blue-1 mt-3">
-        <a class="navbar-brand nav-item ml-5" href="/index.html" id="navbarLogo">
+        <nav class="navbar navbar-expand-lg navbar-light blue-1 mt-3">
+            <a class="navbar-brand nav-item ml-5 ${isHomePage() ? "yellow" : ""}" href="/index.html" id="navbarLogo">
             <img src="${assetsPath}/${logoPath}" width="30" height="30" class="d-inline-block align-top" alt="">
             SmartTrip
         </a>
@@ -23,15 +25,15 @@ export default function renderNavbar() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pathStart}/booking.html">Booking</a>
+                    <a class="nav-link ${currentPage == 'booking.html' ? 'yellow' : ''}" href="${pathStart}/booking.html">Booking</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pathStart}/destinations.html">Destinations</a>
+                    <a class="nav-link ${currentPage == 'destinations.html' ? 'yellow' : ''}" href="${pathStart}/destinations.html">Destinations</a>
                 </li>
                 ${user
             ? `
                 <li class="nav-item">
-                    <a class="nav-link" href="${pathStart}/profile.html">Profile</a>
+                    <a class="nav-link ${currentPage == 'profile.html' ? 'yellow' : ''}" href="${pathStart}/profile.html">Profile</a>
                 </li>
                 <li class="nav-item">
                     <button class="btn nav-link" id="logoutBtn">Logout</button>

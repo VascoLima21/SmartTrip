@@ -73,7 +73,7 @@ function renderProfilePage() {
                     </div>
 
                     <!-- ALL TITLES -->
-                    <div class="mb-4 p-3 rounded bg-blue-2 bg-opacity-50" style="max-height: 150px overflow-y: auto">
+                        <div class="mb-4 p-3 rounded bg-blue-2 bg-opacity-50" style="max-height: 150px; overflow-y: auto;">
                         <h5>All Titles</h5>
                         <ul id="titleList" class="list-group list-group-flush mt-2"></ul>
                     </div>

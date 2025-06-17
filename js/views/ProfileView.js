@@ -67,19 +67,19 @@ function renderProfilePage() {
                 <div class="container mt-4 p-4 rounded blue-1 text-white text-center" style="max-width: 600px">
 
                     <!-- CURRENT TITLE -->
-                    <div class="mb-4 p-3 rounded bg-primary bg-opacity-50">
+                    <div class="mb-4 p-3 rounded bg-blue-2 bg-opacity-50">
                         <h5>Current Title</h5>
-                        <p id="currentTitle" class="fw-bold text-warning">${user.curTitle?.titleName || "No Title"}</p>
+                        <p id="currentTitle" class="fw-bold yellow">${user.curTitle?.titleName || "No Title"}</p>
                     </div>
 
                     <!-- ALL TITLES -->
-                    <div class="mb-4 p-3 rounded bg-primary bg-opacity-50" style="max-height: 150px overflow-y: auto">
+                    <div class="mb-4 p-3 rounded bg-blue-2 bg-opacity-50" style="max-height: 150px overflow-y: auto">
                         <h5>All Titles</h5>
                         <ul id="titleList" class="list-group list-group-flush mt-2"></ul>
                     </div>
 
                     <!-- REQUIREMENTS -->
-                    <div class="p-3 rounded bg-primary bg-opacity-50">
+                    <div class="p-3 rounded bg-blue-2 bg-opacity-50">
                         <h5>Requirements</h5>
                         <p id="requirementsText" class="mt-2">Select a title to view the requirements.</p>
                     </div>
@@ -123,16 +123,24 @@ function renderProfilePage() {
         li.style.cursor = "pointer"
         li.textContent = title.titleName
 
-        const hasTitle = user.titles.some(t => t.titleName === title.titleName)
+        //Verifies if the user has the title unlocked or not
+        const hasTitle = user.titles.some(t => t.titleName == title.titleName)
         if (!hasTitle) {
             li.classList.add("text-muted")
-            li.style.pointerEvents = "none"
         }
 
         li.addEventListener("click", () => {
             selectedTitle = title
             requirementsText.textContent = title.requirementsText
-            saveTitleBtn.disabled = false
+            saveTitleBtn.disabled = !hasTitle  //If hasTitle is true (user has the title unlocked), the button will have disabled = !true, so disbled= false and vice-versa
+
+            // Removes background from previous title selected
+            document.querySelectorAll(".title-item").forEach(item => {
+                item.classList.remove("selected")
+            })
+
+            // Adds bg to current selected title
+            li.classList.add("selected")
         })
 
         titleList.appendChild(li)

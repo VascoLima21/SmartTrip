@@ -6,6 +6,7 @@
     color: #1B3B6F
 }
 
+
 .blue-3 {
     color: #065A82
 }
@@ -14,12 +15,16 @@
     color: #91C6E9
 }
 
+.bg-blue-2 {
+    background-color: #1B3B6F
+}
+
 .bg-blue-4{
     background-color: #91C6E9;
 }
 
-.bg-blue-2 {
-    background-color: #065A82
+.bg-blue-3 {
+    background-color: #065A82 !important
 }
 
 .white {

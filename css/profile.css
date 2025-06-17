@@ -1,0 +1,14 @@
+.title-item {
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+/* Hover only when not selected */
+.title-item:hover:not(.selected) {
+    background-color: #065a82 !important;
+}
+
+.title-item.selected {
+    background-color: #065a82 !important;
+}

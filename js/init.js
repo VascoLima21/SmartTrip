@@ -9,6 +9,7 @@ export function usersInit() {
         const parsedUsers = JSON.parse(localUsers)
         return parsedUsers.map(user => {
             const rebuiltBookings = user.myBookings.map(booking => new Booking(
+                booking.bookingId,
                 booking.departureAirport,
                 booking.arrivalAirport,
                 booking.cost,
@@ -39,6 +40,7 @@ export function usersInit() {
     }
 
     const tokyoBooking = new Booking(
+        1,
         "Lisbon Airport",              // departureAirport
         "Tokyo Haneda Airport",        // arrivalAirport
         2300,                         // cost
@@ -405,6 +407,7 @@ export function bookingsInit() {
     if (localBookings) {
         const parsed = JSON.parse(localBookings);
         return parsed.map(booking => new Booking(
+            booking.bookingId,
             booking.departureAirport,
             booking.arrivalAirport,
             booking.cost,
@@ -421,6 +424,7 @@ export function bookingsInit() {
     const bookings = [];
 
     const japanBooking = new Booking(
+        1,
         "Lisbon Airport",
         "Tokyo Haneda Airport",
         2300,
@@ -440,7 +444,6 @@ export function bookingsInit() {
     );
 
     bookings.push(japanBooking);
-    alert(bookings)
     localStorage.setItem("bookings", JSON.stringify(bookings));
 
     return bookings;

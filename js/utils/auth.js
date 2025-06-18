@@ -32,6 +32,7 @@ export function getUserLogged() {
 
     // Reconstructing Booking instances
     const bookings = parsedUser.myBookings.map(booking => new Booking(
+        booking.bookingId,
         booking.departureAirport,
         booking.arrivalAirport,
         booking.cost,

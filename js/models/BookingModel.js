@@ -1,5 +1,6 @@
 export class Booking {
     constructor(
+        bookingId,
         departureAirport,
         arrivalAirport,
         cost = 0,
@@ -12,6 +13,7 @@ export class Booking {
         endDate,
         userEmail
     ) {
+        this.bookingId = bookingId
         this.departureAirport = departureAirport
         this.arrivalAirport = arrivalAirport
         this.cost = cost

@@ -2,6 +2,7 @@ import { getUserLogged } from "../utils/auth.js"
 import { editData, editTitle } from "../utils/editData.js"
 import renderNavbar from "./NavbarView.js"
 import { loadWorldMap } from "../map/loadMap.js"
+import { renderBookings } from "./UserBookingsView.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNavbar()
@@ -22,6 +23,9 @@ function renderProfilePage() {
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="myTitlesTab" data-bs-toggle="tab" href="#myTitles" role="tab">My Titles</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="myBookingsTab" data-bs-toggle="tab" href="#myBookings" role="tab">My Bookings</a>
             </li>
         </ul>
 
@@ -73,7 +77,7 @@ function renderProfilePage() {
                     </div>
 
                     <!-- ALL TITLES -->
-                        <div class="mb-4 p-3 rounded bg-blue-2 bg-opacity-50" style="max-height: 150px; overflow-y: auto;">
+                        <div class="mb-4 p-3 rounded bg-blue-2 bg-opacity-50" style="max-height: 150px; overflow-y: auto">
                         <h5>All Titles</h5>
                         <ul id="titleList" class="list-group list-group-flush mt-2"></ul>
                     </div>
@@ -86,6 +90,18 @@ function renderProfilePage() {
 
                     <button id="saveTitleBtn" class="btn btn-light mt-3" disabled>Save</button>
 
+                </div>
+            </div>
+            <div class="tab-pane fade" id="myBookings" role="tabpanel">
+                <select id="bookingFilter" class="form-select mb-3" style="max-width: 200px; margin: 0 auto">
+                    <option value="all">All Bookings</option>
+                    <option value="favorites">Favorites</option>
+                    <option value="active">Active</option>
+                    <option value="ended">Ended</option>
+                </select>
+                <div class="container mt-4 p-4 rounded blue-1 text-white text-center" style="max-width: 700px">
+                    <h4>My Bookings</h4>
+                    <ul id="bookingsList" class="list-group list-group-flush mt-3" style="max-height: 400px overflow-y: auto"></ul>
                 </div>
             </div>
         </div>
@@ -153,4 +169,12 @@ function renderProfilePage() {
             saveTitleBtn.disabled = true
         }
     })
+    
+    document.getElementById("myBookingsTab").addEventListener("click", () => {
+        renderBookings()
+    })
+    document.getElementById("bookingFilter").addEventListener("change", (e) => {
+        renderBookings(e.target.value)
+    })
+
 }

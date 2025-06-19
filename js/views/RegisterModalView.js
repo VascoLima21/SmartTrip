@@ -42,8 +42,7 @@ export function initRegisterModal() {
         const password = document.getElementById("passwordInputRegister").value
         const confPassword = document.getElementById("confPasswordInput").value
 
-        // const success = createAccount(email, name, password, confPassword, birthDate)
-        const success = createAccount("teste@gmail.com", "teste", "teste123", "teste123", "22/05/2007")
+        const success = createAccount(email, name, password, confPassword, birthDate)
 
         if (success) {
             const registerModal = bootstrap.Modal.getInstance(document.getElementById("signUpModal"))

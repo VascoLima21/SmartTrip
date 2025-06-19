@@ -34,9 +34,12 @@ function renderProfilePage() {
             <div class="tab-pane fade show active" id="myData" role="tabpanel">
                 <div class="container mt-4 p-4 rounded blue-1 text-white text-center" style="max-width: 600px">
                     <div class="d-flex justify-content-center mb-4">
-                        <img src="${user.profileImg}" alt="Profile Image" class="rounded-circle" width="120" height="120">
+                        <img src="${user.profileImg}" alt="Profile Image" id="profilePreview" class="rounded-circle" width="120" height="120">
                     </div>
-
+                    <div class="mb-3">
+                        <label for="editProfileImg" class="form-label">Change Profile Image</label>
+                        <input type="file" class="form-control" id="editProfileImg" accept="image/*">
+                    </div>
                     <form id="editProfileForm" class="text-start">
                         <div class="mb-3">
                             <label for="editName" class="form-label">Name</label>
@@ -109,6 +112,18 @@ function renderProfilePage() {
 
     document.body.insertAdjacentHTML("beforeend", profileHTML)
 
+    //Allows there to be a preview of the imagem we are saving before saving changes
+    document.getElementById("editProfileImg").addEventListener("change", (e) => {
+        const file = e.target.files[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onload = () => {
+                document.getElementById("profilePreview").src = reader.result
+            }
+            reader.readAsDataURL(file)
+        }
+    })    
+
     const editProfileForm = document.getElementById("editProfileForm")
     editProfileForm.addEventListener("submit", (event) => {
         event.preventDefault()
@@ -173,6 +188,7 @@ function renderProfilePage() {
     document.getElementById("myBookingsTab").addEventListener("click", () => {
         renderBookings()
     })
+    
     document.getElementById("bookingFilter").addEventListener("change", (e) => {
         renderBookings(e.target.value)
     })

@@ -53,11 +53,6 @@ export default function renderNavbar() {
     const container = document.getElementById("navbarContainer")
     container.innerHTML = navbarHTML
 
-    // const currentPath = location.pathname
-
-    // document.querySelectorAll(".nav-link").forEach(link => {
-    //     alert(link.href.endsWith("/"))
-    // })
     // If there is a logout button adds event listener to it
     const logoutBtn = document.getElementById("logoutBtn")
     if (logoutBtn) {

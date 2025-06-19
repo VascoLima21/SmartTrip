@@ -89,7 +89,7 @@ export function countriesInit() {
         const parsedCountries = JSON.parse(localCountries)
         //Reconstructs the Parsed Countries list so they are instances of the Country class, to have access to methods and so on
         return parsedCountries.map(country => new Country(
-            country.countryId, country.name, country.capital, country.typesOfTourism, country.img, country.cities, country.airports, country.countryPrice, country.numberOfPeople
+            country.countryId, country.countryCode, country.name, country.capital, country.typesOfTourism, country.img, country.cities, country.airports, country.countryPrice, country.numberOfPeople
         ));
     }
 

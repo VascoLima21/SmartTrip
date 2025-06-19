@@ -1,8 +1,9 @@
 import { City } from "./CityModel.js";
 
 export class Country {
-    constructor(countryId, name, capital, typesOfTourism, img, cities = [], airports = [], countryPrice, numberOfPeople) {
+    constructor(countryId, countryCode, name, capital, typesOfTourism, img, cities = [], airports = [], countryPrice, numberOfPeople) {
         this.countryId = countryId;
+        this.countryCode = countryCode;
         this.name = name;
         this.capital = capital;
         this.typesOfTourism = typesOfTourism;

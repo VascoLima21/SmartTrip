@@ -59,7 +59,7 @@
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
-                        <option value="5+">5+</option>
+                        <option value="5">5</option>
                     </select>
                 </div>
             </div>
@@ -69,11 +69,13 @@
                     <label class="form-label">Type of Tourism</label>
                     <select class="form-select" id="tourismType" style="max-width: 400px;" required>
                         <option value="">Select a Type of Tourism...</option>
-                        <option value="adventure">Adventure Tourism</option>
-                        <option value="cultural">Cultural Tourism</option>
-                        <option value="religious">Religious Tourism</option>
-                        <option value="nature">Nature Tourism</option>
-                        <option value="urban">Urban Tourism</option>
+                        <option value="Adventure">Adventure Tourism</option>
+                        <option value="Cultural">Cultural Tourism</option>
+                        <option value="Nature">Nature Tourism</option>
+                        <option value="Climate">Climate Tourism</option>                        
+                        <option value="Technological">Technological Tourism</option>
+                        <option value="Gastronomical">Gastronomical Tourism</option>
+                        <option value="Historical">Historical Tourism</option>
                     </select>
                 </div>
             </div>
@@ -86,40 +88,13 @@
         </form>
     </div>
 
-    <!-- Recommendations Section -->
-    <div class="recommendations-section" id="recommendationsSection" style="display:none;">
-        <div class="recommendations-container">
+<div class="recommendations-section" id="recommendationsSection" style="display:none;">
+  <div class="recommendations-container" id="recommendationsContainer">
+    <!-- Os cards serão inseridos aqui pelo JS -->
+  </div>
+</div>
 
-            <div class="trip-card">
-                <img src="/assets/countryImages/JapanImage.png" alt="Japan" class="trip-image" />
-                <h3 class="trip-title">Trip to Japan</h3>
-                <div class="trip-buttons">
-                    <!-- Botão que abre o modal -->
-                    <button class="btn btn-success btn-trip" data-bs-toggle="modal" data-bs-target="#paymentModal" data-cost="1200" data-destination="Japan">Book Now</button>
-                    <button class="btn btn-primary btn-trip" data-action="details">See Details</button>
-                </div>
-            </div>
 
-            <div class="trip-card">
-                <img src="/assets/countryImages/HawaiiImage.png" alt="Hawaii" class="trip-image" />
-                <h3 class="trip-title">Trip to Hawaii</h3>
-                <div class="trip-buttons">
-                    <button class="btn btn-success btn-trip" data-bs-toggle="modal" data-bs-target="#paymentModal" data-cost="1500" data-destination="Hawaii">Book Now</button>
-                    <button class="btn btn-primary btn-trip" data-action="details">See Details</button>
-                </div>
-            </div>
-
-            <div class="trip-card">
-                <img src="/assets/countryImages/SlovakiaImage.png" alt="Slovakia" class="trip-image" />
-                <h3 class="trip-title">Trip to Slovakia</h3>
-                <div class="trip-buttons">
-                    <button class="btn btn-success btn-trip" data-bs-toggle="modal" data-bs-target="#paymentModal" data-cost="900" data-destination="Slovakia">Book Now</button>
-                    <button class="btn btn-primary btn-trip" data-action="details">See Details</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
     <!-- Modal de Pagamento -->
     <div class="modal" id="paymentModal" tabindex="-1" aria-hidden="true">

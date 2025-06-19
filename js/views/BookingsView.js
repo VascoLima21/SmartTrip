@@ -1,22 +1,33 @@
-import { countriesInit } from "../init.js"
+import { countriesInit } from "../init.js";
 import renderNavbar from "../views/NavbarView.js";
-import { getUserLogged } from "../utils/auth.js"
+import { getUserLogged } from "../utils/auth.js";
+import { getRecommendedDestinations } from "../utils/recommendations.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const countries = countriesInit();
-  const user = getUserLogged()
+  const user = getUserLogged();
+
   renderNavbar();
-  handleFormSubmission();
+  handleFormSubmission(countries, user);
   setMinimumDate();
-  setupBookingButtons();
   setupPaymentForm();
 });
 
+
+
 // Função para manipular envio do formulário principal
-function handleFormSubmission() {
+function handleFormSubmission(countries, user) {
   const bookingForm = document.getElementById("bookingForm");
 
   bookingForm.addEventListener("submit", function (e) {
+    console.log("User is:", user); // <-- Debug: vê se é null ou User
+
+    if (!user) {
+      e.preventDefault();
+      alert("You must be logged in to submit the booking.");
+      return;
+    }
+
     e.preventDefault();
 
     const formData = getFormData();
@@ -26,17 +37,24 @@ function handleFormSubmission() {
       return;
     }
 
+    const recommendedDestinations = getRecommendedDestinations(
+      countries,
+      formData.tourism,
+      parseInt(formData.people)
+    );
+
+    renderRecommendations(recommendedDestinations);
     showRecommendations();
-    console.log("Form submitted with:", formData);
   });
 }
+
 
 function getFormData() {
   return {
     departure: document.getElementById("departureLocation").value,
     duration: document.getElementById("tripDuration").value,
     date: document.getElementById("tripDate").value,
-    people: document.getElementById("numberOfPeople").value,
+    people: parseInt(document.getElementById("numberOfPeople").value), // ESSENCIAL
     tourism: document.getElementById("tourismType").value,
   };
 }
@@ -69,17 +87,44 @@ function setMinimumDate() {
   dateInput.setAttribute("min", today);
 }
 
-// configurar botões "Book Now" para abrir modal com dados ---
+
+// Função que monta o HTML dos cards de recomendação e injeta na página
+function renderRecommendations(destinations) {
+  const container = document.querySelector(".recommendations-container");
+  container.innerHTML = ""; // Limpa recomendações anteriores
+
+ destinations.forEach(({ country, city }) => {
+console.log(country.name, country.typesOfTourism);
+  const basePrice = country.pricePerPerson || 1000;
+  const cityName = city.name || "City";
+  const countryName = country.name || "Country";
+  const countryImage = country.img || '/assets/countryImages/default.png';  // trocar .image por .img
+
+  const card = document.createElement("div");
+  card.className = "trip-card";
+
+  card.innerHTML = `
+    <img src="${countryImage}" alt="${countryName}" class="trip-image" />
+    <h3 class="trip-title">Trip to ${countryName} - ${cityName}</h3>
+    <div class="trip-buttons">
+      <button class="btn btn-success btn-trip" data-bs-toggle="modal" data-bs-target="#paymentModal" data-cost="${basePrice}" data-destination="${countryName}">Book Now</button>
+      <button class="btn btn-primary btn-trip" data-action="details">See Details</button>
+    </div>
+  `;
+
+  container.appendChild(card);
+});
+}
+
+// configurar botões "Book Now" para abrir modal com dados dinâmicos
 function setupBookingButtons() {
-  const bookingButtons = document.querySelectorAll(".btn-trip[data-action='book']");
+  const bookingButtons = document.querySelectorAll(
+    ".btn-trip[data-bs-toggle='modal']"
+  );
   bookingButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // Pega o trip card para obter info (ex: título, custo)
-      const tripCard = btn.closest(".trip-card");
-      const destination = tripCard.querySelector(".trip-title").textContent.replace("Trip to ", "");
-      // Aqui você pode definir o custo fixo ou dinamicamente
-      // Exemplo fixo:
-     
+      const destination = btn.getAttribute("data-destination");
+      const cost = btn.getAttribute("data-cost");
 
       openPaymentModal({ destinationCountry: destination, cost });
     });
@@ -93,7 +138,6 @@ function openPaymentModal(booking) {
 
   tripSummary.innerHTML = `<h6>Trip to ${booking.destinationCountry}</h6><p>Total Cost: <strong>€${booking.cost}</strong></p>`;
 
-  // Instancia o modal do Bootstrap e mostra
   const modal = new bootstrap.Modal(paymentModalEl);
   modal.show();
 }
@@ -108,7 +152,6 @@ function setupPaymentForm() {
 
     alert("Payment submitted! Thank you.");
 
-    // Fecha o modal após submissão
     const modalInstance = bootstrap.Modal.getInstance(paymentModalEl);
     modalInstance.hide();
 
@@ -116,7 +159,6 @@ function setupPaymentForm() {
   });
 }
 
-// Exporta funções para testes ou uso externo se necessário
 export {
   handleFormSubmission,
   getFormData,

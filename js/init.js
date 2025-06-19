@@ -87,7 +87,7 @@ export function countriesInit() {
         const parsedCountries = JSON.parse(localCountries)
         //Reconstructs the Parsed Countries list so they are instances of the Country class, to have access to methods and so on
         return parsedCountries.map(country => new Country(
-            country.id, country.capital, country.typesOfTourism, country.img, country.city, country.airports
+            country.countryId, country.name, country.capital, country.typesOfTourism, country.img, country.cities, country.airports, country.countryPrice, country.numberOfPeople
         ));
     }
 
@@ -95,10 +95,12 @@ export function countriesInit() {
 
     const japan = {
     countryId: 1,
+    name: "Japan",
     countryPrice: 1000,
     airports: [],
     capital: "Tokyo",
     typesOfTourism: ["Cultural", "Technological", "Gastronomical"],
+    numberOfPeople: 2,
     img: "../assets/countryImages/JapanImage.png",
     cities: [
         {
@@ -170,17 +172,19 @@ export function countriesInit() {
 
     const mexico = {
     countryId: 2,
+    name: "Mexico",
     countryPrice: 850,
     airports: [],
     capital: "Ciudad de México",
-    typesOfTourism: ["Cultural", "Historical", "Beach"],
-    img: "../assets/countryImages/MexicoImage.png",
+    typesOfTourism: ["Cultural", "Historical", "Climate"],
+    numberOfPeople: 5,
+    img: "../assets/countryImages/MexicoImage.jpeg",
     cities: [
         {
         cityId: 3,
         name: "Ciudad de México",
         cityPrice: 200,
-        img: "../assets/cityImages/cdmx.jpg",
+        img: "../assets/cityImages/mexicoCity.jpg",
         hotels: [
             {
             hotelId: 7,
@@ -229,11 +233,13 @@ export function countriesInit() {
 
     const spain = {
     countryId: 3,
+    name: "Spain",
     countryPrice: 900,
     airports: [],
     capital: "Madrid",
-    typesOfTourism: ["Beach", "Cultural", "Nightlife"],
-    img: "../assets/countryImages/SpainImage.png",
+    typesOfTourism: ["Climate", "Cultural", "Gastronomical"],
+    numberOfPeople: 4,
+    img: "../assets/countryImages/SpainImage.jpg",
     cities: [
         {
         cityId: 5,
@@ -264,11 +270,13 @@ export function countriesInit() {
 
     const italy = {
     countryId: 4,
+    name: "Italy",
     countryPrice: 950,
     airports: [],
     capital: "Rome",
     typesOfTourism: ["Historical", "Cultural", "Gastronomical"],
-    img: "../assets/countryImages/ItalyImage.png",
+    numberOfPeople: 2,
+    img: "../assets/countryImages/ItalyImage.jpg",
     cities: [
         {
         cityId: 6,
@@ -323,11 +331,13 @@ export function countriesInit() {
 
     const madagascar = {
     countryId: 5,
+    name: "Madagascar",
     countryPrice: 1000,
     airports: [],
     capital: "Antananarivo",
-    typesOfTourism: ["Nature", "Adventure", "Ecotourism"],
-    img: "../assets/countryImages/MadagascarImage.png",
+    typesOfTourism: ["Nature", "Adventure", "Climate"],
+    numberOfPeople: 3,
+    img: "../assets/countryImages/MadagascarImage.jpg",
     cities: [
         {
         cityId: 8,
@@ -358,10 +368,12 @@ export function countriesInit() {
 
     const iceland = {
     countryId: 6,
+    name: "Iceland",
     countryPrice: 1100,
     airports: [],
     capital: "Reykjavík",
-    typesOfTourism: ["Adventure", "Nature", "Northern Lights"],
+    typesOfTourism: ["Adventure", "Nature", "Climate"],
+    numberOfPeople: 1,
     img: "../assets/countryImages/IcelandImage.png",
     cities: [
         {

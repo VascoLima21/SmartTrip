@@ -2,22 +2,20 @@ import calcAge from "./date.js"
 import { User } from "../models/UserModel.js"
 import { Booking } from "../models/BookingModel.js"
 
-const users = JSON.parse(localStorage.getItem("users"))
-
 export function login(name, password) {
+    const users = JSON.parse(localStorage.getItem("users")) || []
+
     for (let user of users) {
         if (user.name == name && user.password == password) {
             localStorage.setItem("userLogged", JSON.stringify(user))
-            // Modal Alerting the user that they suceeded in logging in and saying welcome
-            alert("Sucess")
+            alert("Success")
             return true
-        } else if (user.name == name && user.password !== password) {
-            // Modal alerting that the passwords don't match
+        } else if (user.name == name) {
             return false
         }
     }
-    alert("Something Went Wrong")
-    // Modal alerting that the name was not found
+
+    alert("Something went wrong")
     return false
 }
 
@@ -30,8 +28,7 @@ export function getUserLogged() {
     const parsedUser = JSON.parse(localStorage.getItem("userLogged"))
     if (!parsedUser) return null
 
-    // Reconstructing Booking instances
-    const bookings = parsedUser.myBookings.map(booking => new Booking(
+    const bookings = parsedUser.myBookings?.map(booking => new Booking(
         booking.bookingId,
         booking.departureAirport,
         booking.arrivalAirport,
@@ -44,7 +41,7 @@ export function getUserLogged() {
         booking.startDate,
         booking.endDate,
         booking.userEmail
-    ))
+    )) || []
 
     return new User(
         parsedUser.name,
@@ -61,34 +58,41 @@ export function getUserLogged() {
     )
 }
 
-export function createAccount(email, name, password, birthDate) {
+export function createAccount(email, name, password, confPassword, birthDate) {
+    if (password != confPassword) {
+        alert("Passwords do not match.")
+        return false
+    }
+
+    const users = JSON.parse(localStorage.getItem("users")) || []
+
     for (let user of users) {
         if (user.email == email) {
-            // Modal for error message "User with that email already exists"
+            alert("User with that email already exists.")
             return false
         } else if (user.name == name) {
-            // Modal for error message "name already exists"
+            alert("User with that name already exists.")
             return false
         }
     }
 
-    // Creates new user object
-    const newUser = {
-        name: name,
-        email: email,
-        birthDate: birthDate,
-        password: password,
-        countriesVisited: [],
-        points: 0,
-        profileImg: "./../assets/profileImages/defaultPfp.png",
-        titles: [],
-        curTitle: "",
-        age: function() {
-            return calcAge(this.birthDate)
-        },
-        role: "user"
-    }
+    const newUser = new User(
+        name,
+        email,
+        birthDate,
+        password,
+        [], // bookings
+        0, // points
+        "./../assets/profileImages/defaultPfp.png",
+        [], // titles
+        [], // favouriteBookings
+        "", // curTitle
+        "user" // role
+    )
+
     users.push(newUser)
+    localStorage.setItem("users", JSON.stringify(users))
     localStorage.setItem("userLogged", JSON.stringify(newUser))
+
     return true
 }

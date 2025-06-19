@@ -1,6 +1,7 @@
 import { getUserLogged, logout } from "../utils/auth.js"
+import { renderWelcomeText } from "./LoginModalView.js"
 
-function isHomePage() {
+export function isHomePage() {
     return location.pathname.endsWith("index.html")
 }
 
@@ -63,8 +64,6 @@ export default function renderNavbar() {
         logoutBtn.addEventListener("click", () => {
             logout()
             renderNavbar()
-            renderWelcomeText()
         })
     }
 }
-

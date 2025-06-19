@@ -89,7 +89,7 @@ export function countriesInit() {
         const parsedCountries = JSON.parse(localCountries)
         //Reconstructs the Parsed Countries list so they are instances of the Country class, to have access to methods and so on
         return parsedCountries.map(country => new Country(
-            country.countryId, country.countryCode, country.name, country.capital, country.typesOfTourism, country.img, country.cities, country.airports, country.countryPrice, country.numberOfPeople
+            country.countryId, country.countryCode, country.name, country.capital, country.typesOfTourism, country.img, country.cities, country.countryPrice, country.numberOfPeople
         ));
     }
 
@@ -100,7 +100,6 @@ export function countriesInit() {
         countryCode: "JP",
         name: "Japan",
         countryPrice: 1000,
-        airports: [],
         capital: "Tokyo",
         typesOfTourism: ["Cultural", "Technological", "Gastronomical"],
         numberOfPeople: 2,
@@ -110,6 +109,7 @@ export function countriesInit() {
                 cityId: 1,
                 name: "Tokyo",
                 cityPrice: 300,
+                airport: "Haneda Airport",
                 img: "../assets/cityImages/tokyo.jpg",
                 hotels: [
                     {
@@ -142,6 +142,7 @@ export function countriesInit() {
                 cityId: 2,
                 name: "Kyoto",
                 cityPrice: 250,
+                airport: "Kansai International Airport",
                 img: "../assets/cityImages/kyoto.jpg",
                 hotels: [
                     {
@@ -178,7 +179,6 @@ export function countriesInit() {
         countryCode: "MX",
         name: "Mexico",
         countryPrice: 850,
-        airports: [],
         capital: "Ciudad de México",
         typesOfTourism: ["Cultural", "Historical", "Climate"],
         numberOfPeople: 5,
@@ -188,6 +188,7 @@ export function countriesInit() {
                 cityId: 3,
                 name: "Ciudad de México",
                 cityPrice: 200,
+                airport: "Benito Juárez International Airport",
                 img: "../assets/cityImages/mexicoCity.jpg",
                 hotels: [
                     {
@@ -212,6 +213,7 @@ export function countriesInit() {
                 cityId: 4,
                 name: "Cancún",
                 cityPrice: 320,
+                airport: "Cancún International Airport",
                 img: "../assets/cityImages/cancun.jpg",
                 hotels: [
                     {
@@ -240,7 +242,6 @@ export function countriesInit() {
         countryCode: "ES",
         name: "Spain",
         countryPrice: 900,
-        airports: [],
         capital: "Madrid",
         typesOfTourism: ["Climate", "Cultural", "Gastronomical"],
         numberOfPeople: 4,
@@ -250,6 +251,7 @@ export function countriesInit() {
                 cityId: 5,
                 name: "Benidorm",
                 cityPrice: 220,
+                airport: "Alicante–Elche Miguel Hernández Airport",
                 img: "../assets/cityImages/benidorm.jpg",
                 hotels: [
                     {
@@ -278,7 +280,6 @@ export function countriesInit() {
         countryCode: "IT",
         name: "Italy",
         countryPrice: 950,
-        airports: [],
         capital: "Rome",
         typesOfTourism: ["Historical", "Cultural", "Gastronomical"],
         numberOfPeople: 2,
@@ -288,6 +289,7 @@ export function countriesInit() {
                 cityId: 6,
                 name: "Rome",
                 cityPrice: 300,
+                airport: "Leonardo da Vinci–Fiumicino Airport",
                 img: "../assets/cityImages/rome.jpg",
                 hotels: [
                     {
@@ -312,6 +314,7 @@ export function countriesInit() {
                 cityId: 7,
                 name: "Milan",
                 cityPrice: 280,
+                airport: "Milan Malpensa Airport",
                 img: "../assets/cityImages/milan.jpg",
                 hotels: [
                     {
@@ -340,7 +343,6 @@ export function countriesInit() {
         countryCode: "MG",
         name: "Madagascar",
         countryPrice: 1000,
-        airports: [],
         capital: "Antananarivo",
         typesOfTourism: ["Nature", "Adventure", "Climate"],
         numberOfPeople: 3,
@@ -350,6 +352,7 @@ export function countriesInit() {
                 cityId: 8,
                 name: "Antananarivo",
                 cityPrice: 180,
+                airport: "Ivato International Airport",
                 img: "../assets/cityImages/antananarivo.jpg",
                 hotels: [
                     {
@@ -378,7 +381,6 @@ export function countriesInit() {
         countryCode: "IS",
         name: "Iceland",
         countryPrice: 1100,
-        airports: [],
         capital: "Reykjavík",
         typesOfTourism: ["Adventure", "Nature", "Climate"],
         numberOfPeople: 1,
@@ -388,6 +390,7 @@ export function countriesInit() {
                 cityId: 9,
                 name: "Reykjavík",
                 cityPrice: 350,
+                airport: "Keflavík International Airport",
                 img: "../assets/cityImages/reykjavik.jpg",
                 hotels: [
                     {

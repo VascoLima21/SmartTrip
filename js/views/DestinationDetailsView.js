@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCountryDetails(countryData)
 })
 
+//Function to render the selected country's details
 function renderCountryDetails(country) {
     const container = document.getElementById("countryContainer")
 

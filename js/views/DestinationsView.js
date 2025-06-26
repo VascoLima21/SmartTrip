@@ -44,7 +44,7 @@ function renderTopDestinations() {
                     minIndex = j
                 }
             }
-            //If countrCode appears more than the minIndex it replaces it
+            //If countryCode appears more than the minIndex it replaces it
             if (countryCount[code] > countryCount[topCountryCodes[minIndex]]) {
                 topCountryCodes[minIndex] = code
             }
@@ -65,7 +65,6 @@ function renderTopDestinations() {
                     data.typesOfTourism,
                     data.img,
                     data.cities,
-                    data.airports,
                     data.countryPrice,
                     data.numberOfPeople
                 )
@@ -79,6 +78,7 @@ function renderTopDestinations() {
     //Creates the cards for the countries/destinations
     for (let i = 0; i < topCountries.length; i++) {
         const country = topCountries[i]
+        console.log(country)
         const col = document.createElement("div")
         col.classList.add("col-md-4", "d-flex", "justify-content-center")
 

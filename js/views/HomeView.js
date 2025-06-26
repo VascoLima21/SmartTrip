@@ -1,6 +1,6 @@
 import renderNavbar from "./NavbarView.js"
 import { titlesInit, usersInit, countriesInit, bookingsInit } from "../init.js"
-import renderModals from "./ModalsView.js"
+import { renderAuthModals } from "./ModalsView.js"
 import { initLoginModal, renderWelcomeText } from "./LoginModalView.js"
 import { initRegisterModal } from "./RegisterModalView.js"
 
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     bookingsInit()
 
     renderNavbar()
-    renderModals()
+    renderAuthModals()
     initLoginModal()
     initRegisterModal()
     renderWelcomeText()

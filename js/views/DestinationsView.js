@@ -1,12 +1,12 @@
 import { Country } from "../models/CountryModel.js";
 import renderNavbar from "./NavbarView.js";
-import renderModals from "./ModalsView.js";
+import { renderAuthModals } from "./ModalsView.js";
 import { initLoginModal } from "./LoginModalView.js";
 import { initRegisterModal } from "./RegisterModalView.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNavbar()
-    renderModals()
+    renderAuthModals()
     initLoginModal()
     initRegisterModal()
     renderTopDestinations()

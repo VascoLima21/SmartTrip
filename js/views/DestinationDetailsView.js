@@ -1,5 +1,5 @@
 import {initLoginModal} from "./LoginModalView.js"
-import renderModals from "./ModalsView.js"
+import { renderAuthModals } from "./ModalsView.js"
 import renderNavbar from "./NavbarView.js"
 import {initRegisterModal} from "./RegisterModalView.js"
 
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const countryData = JSON.parse(localStorage.getItem("selectedCountry"))
 
     renderNavbar()
-    renderModals()
+    renderAuthModals()
     initLoginModal()
     initRegisterModal()
 

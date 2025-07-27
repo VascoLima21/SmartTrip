@@ -15,10 +15,10 @@ export function getRecommendedDestinations(countries, tourismType, numberOfPeopl
   } else {
     // Menos de 3 -> completar com países que suportem o número de pessoas indicado
     console.log("Número de pessoas requisitado:", numberOfPeople);
-console.log("Todos os países com numberOfPeople >= ao pedido:");
-countries.forEach(c => {
-  console.log(`${c.name}: ${c.numberOfPeople}`);
-});
+    console.log("Todos os países com numberOfPeople >= ao pedido:");
+    countries.forEach(c => {
+      console.log(`${c.name}: ${c.numberOfPeople}`);
+    });
     const remainingCountries = countries.filter(
       (c) => !chosenCountries.includes(c) && c.numberOfPeople == numberOfPeople
     );
